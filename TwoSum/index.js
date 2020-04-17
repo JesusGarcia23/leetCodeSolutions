@@ -27,16 +27,3 @@ var twoSum = function(nums, target) {
       }
     }
 };
-
-// with map
-var twoSum = function(nums, target) {
-
-    nums.filter((number, index) => )
-
-
-    for(let i = 0; i < nums.length; i++) {
-      if(nums.indexOf(target - nums[i]) >= 0){
-         return [i, nums.indexOf(target - nums[i])];
-      }
-    }
-};
