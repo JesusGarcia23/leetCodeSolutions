@@ -8,6 +8,21 @@
 
 // You must do this in-place without making a 
 
+
+var moveZeroes = function(nums) {
+    let length = nums.length;
+    for(let i = 0; i < length; i++) {
+      if(nums[i] === 0) {
+        nums.splice(i, 1);
+        nums.push(0);
+        i = i - 1;
+        length = length - 1;
+      }
+    }
+    return nums;
+  };
+
+
 // NOTE: This code works everywhere but Leetcode website (Yeah, their website is trash)
 
 var moveZeroes = function(nums) {
