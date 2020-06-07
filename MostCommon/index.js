@@ -20,27 +20,33 @@
 // and that "hit" isn't the answer even though it occurs more because it is banned.
 
 var mostCommonWord = function(paragraph, banned) {
-    let allTexts = paragraph.split(" ")
-    let words = {}
-    for(let i = 0; i < allTexts.length; i++) {
-      let word = allTexts[i].toLowerCase().split(/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/).join("")
-      if(words[word] === undefined) {
-        words[word] = 1;
-      }else{
-        words[word] += 1;
-      }
+  let allTexts = paragraph.replace(/,/g, " ").split(" ")
+  let words = {}
+  for(let i = 0; i < allTexts.length; i++) {
+    let word = allTexts[i].toLowerCase().split(/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/).join("")
+    if(word === "") {
+      continue;
+    }else{
+    if(words[word] === undefined) {
+      words[word] = 1;
+    }else{
+      words[word] += 1;
     }
-    
-    mostCommon = {
-      word: "",
-      count: 0
-    }
+  }
+        }
+  
+  mostCommon = {
+    word: "",
+    count: 0
+  }
 
-    for(key in words){
-      if(words[key] > mostCommon.count && banned.indexOf(key) < 0) {
-        mostCommon['word'] = key;
-        mostCommon['count'] = words[key]
-      }
+  for(key in words){
+    if(words[key] > mostCommon.count && banned.indexOf(key) < 0) {
+      mostCommon['word'] = key;
+      mostCommon['count'] = words[key]
     }
-    return mostCommon['word']
+  }
+  return mostCommon['word']
 };
+
+mostCommonWord("a, a, a, a, b,b,b,c, c", ["a"])
